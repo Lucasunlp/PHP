@@ -1,0 +1,12 @@
+Consideraciones Modificar Etiqueta:
+Modificar significa borrar etiquetaVieja y agregar etiquetaNueva.
+Se agregan/eliminan filas de libro_has_etiqueta al Tildar/Destildar los checkboxes de Etiquetas cuando damos de alta o modificamos un libro.
+Sabiendo esto:
+
+	Si queremos modificar una etiqueta que SI está en libro_has_etiqueta y apunta a 1 o más libros NO BORRADOS, NO se hace la modificación y se notifica del error de que la etiqueta posee libros asociados. Sólo borramos etiquetas VIEJAS (o mal tipeadas).
+
+	Si la etiqueta a borrar NO está en libro_has_etiqueta, significa que no hay problema en borrarla FISICAMENTE. Esto es xq en libro_has_etiqueta vamos a sacar o meter cosas cuando se desmarque/marque una etiqueta en la pagina del libro. Si no figura en esa tabla, no está asociada a NINGUN libro.
+	Al borrar un libro nunca desmarcamos las etiquetas que tiene, por lo q nunca se borra esa relacion en la tabla libro_has_etiqueta, por lo q nunca podríamos borrar una etiqueta relacionada a ese libro ya que romperíamos el historial de libros y por consiguiente el historial de compras. Cualquier etiqueta que NO figure en libro_has_etiqueta, se puede BORRAR FISICAMENTE sin problema.
+
+	Ahora, si queremos modificar una etiqueta q SI está en libro_has_etiqueta, pero apuntando a libros BORRADOS logicamente, la marcamos como "borrada" (borrado logico) y CREAMOS una nueva, con el nuevo nombre. La tabla libro_has_etiqueta NO se toca.
+
